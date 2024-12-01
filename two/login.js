@@ -6,17 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const kakaoLoginButton = document.getElementById('enter-number');
 
   // 로그인 함수
-  Kakao.Auth.login({
-    success: function(authObj) {
-        // 로그인 성공 후 처리
-        console.log(authObj);
-    },
-    fail: function(err) {
-        // 로그인 실패 처리
-        console.log(err);
-    },
-    redirectUri: 'https://djaxoqja.github.io/my-app/select/select.html'  // 리디렉션 URI 설정
-});
+  function loginWithKakao() {
+    Kakao.Auth.login({
+        success: function(authObj) {
+            console.log(authObj); // 로그인 성공 후 처리
+        },
+        fail: function(err) {
+            console.log(err); // 로그인 실패 처리
+        },
+        redirectUri: 'https://djaxoqja.github.io/my-app/select/select.html'  // 리디렉션 URI 설정
+    });
+}
 
 
   // 사용자 정보 요청 함수
