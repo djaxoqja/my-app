@@ -1,0 +1,118 @@
+/* screen - qr-detail */
+
+.qr-detail {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  height: 917px;
+  overflow: hidden;
+  width: 412px;
+}
+
+.qr-detail .overlap-group {
+  background-image: url(../img/383-2x-1.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 1130px;
+  margin-left: -219px;
+  margin-top: -141px;
+  position: relative;
+  width: 666px;
+}
+
+.qr-detail .rectangle-56 {
+  height: 817px;
+  left: 219px;
+  position: absolute;
+  top: 219px;
+  width: 412px;
+}
+
+.qr-detail .text-1 {
+  color: var(--white);
+  font-size: var(--font-size-m);
+  left: 349px;
+  top: 645px;
+  width: 151px;
+}
+
+.qr-detail .text-2 {
+  color: #c4c4c4;
+  font-size: var(--font-size-s);
+  left: 238px;
+  top: 918px;
+  width: 383px;
+}
+
+.qr-detail .rectangle-148 {
+  height: 99px;
+  left: 221px;
+  position: absolute;
+  top: 142px;
+  width: 410px;
+}
+
+.qr-detail .group {
+  background-image: url(../img/group@2x.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  height: 47px;
+  left: 254px;
+  position: absolute;
+  top: 172px;
+  width: 32px;
+}
+
+.qr-detail .crosshair-2 {
+  background-image: url(../img/crosshair\ 2.png);
+  background-color: transparent;
+  border: none;
+  height: 54px;
+  left: 552px;
+  position: absolute;
+  top: 172px;
+  width: 54px;
+}
+
+.qr-detail .url {
+  color: var(--white);
+  font-family: var(--font-family-alata);
+  font-size: var(--font-size-m);
+  font-weight: 400;
+  left: 297px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 169px;
+}
+
+.qr-detail .image-3 {
+  height: 618px;
+  left: 291px;
+  object-fit: cover;
+  position: absolute;
+  top: 271px;
+  width: 278px;
+}
+
+.qr-detail .ellipse-13 {
+  border: 4px solid;
+  border-color: #e82121;
+  border-radius: 30px;
+  height: 60px;
+  left: 315px;
+  position: absolute;
+  top: 338px;
+  width: 60px;
+}
+
+.qr-detail .text {
+  font-family: var(--font-family-alata);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+}

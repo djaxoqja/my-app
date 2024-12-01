@@ -1,0 +1,188 @@
+/* screen - android-compact-2 */
+
+@font-face {
+	font-family: Inter2;
+	src: url(../fonts/Inter_18pt-Bold.ttf);
+}
+
+.e78_115 {
+	width: 412px;
+	height: 912px;
+	background-color: var(--bg-color-light);
+	color: var(--text-color-light);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	transition: background-color 0.3s, color 0.3s;
+	position: relative;
+  }
+  
+  /* 다크 모드 배경 */
+  [data-theme="dark-mode"] .e78_115 {
+	background-color: var(--bg-color-dark);
+	color: var(--text-color-dark);
+}
+
+.android-compact-2 {
+  align-items: flex-start;
+  background-color: #122f52;
+  display: flex;
+  flex-direction: column;
+  gap: 82px;
+  height: 917px;
+  overflow: hidden;
+  width: 412px;
+}
+
+.android-compact-2 .map-pin {
+  align-self: center;
+  height: 170px;
+  margin-right: 34.0px;
+  margin-top: 61px;
+  width: 170px;
+}
+
+.android-compact-2 .overlap-group {
+  height: 667px;
+  position: relative;
+  width: 422px;
+}
+
+.android-compact-2 .rectangle-2 {
+  background-color: #30ae62;
+  border-radius: 41px;
+  height: 667px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 412px;
+}
+
+.android-compact-2 .by-signing-up-you-ac {
+  color: transparent;
+  font-family: Inter2;
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  left: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 395px;
+  width: 363px;
+}
+
+.android-compact-2 .span {
+  color: var(--black);
+}
+
+.android-compact-2 .span-2 {
+  color: #0e0e0e;
+}
+
+.android-compact-2 .rectangle-3 {
+  background-color: #122f52;
+  border-radius: 20px;
+  height: 48px;
+  left: 92px;
+  position: absolute;
+  top: 474px;
+  width: 228px;
+}
+
+button.rectangle-3 {
+
+  color: #ffe8e8;
+  font-family: Inter2;
+  font-size: var(--font-size-l);
+  font-weight: 700;
+  left: 145px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 485px;
+  white-space: nowrap;
+  width: 121px;
+}
+
+.android-compact-2 .text-1 {
+  color: var(--black);
+  font-family: Inter2;
+  font-size: var(--font-size-l);
+  font-weight: 700;
+  left: 142px;
+  top: 102px;
+  width: 239px;
+
+  line-height: 29px;
+  font-style: normal;
+}
+
+.android-compact-2  .find-me {
+  color: var(--black);
+  font-family: Inter2;
+  font-size: var(--font-size-l);
+  font-weight: 700;
+  left: 75px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 145px;
+  width: 347px;
+}
+
+
+#enter-number {
+
+     background: #E9E938;
+     border-radius: 10px;
+     
+     position: absolute;
+     width: 318px;
+     height: 62px;
+     
+     left: 47px;
+     top: 280px;
+   
+    text-align: center;
+  
+  }
+#enter-number {
+
+    color: #514c4c;
+    font-family: Inter2;
+    display:  block;
+    font-size: var(--font-size-m);
+    font-weight: 400;
+    left: 59px;
+    letter-spacing: 0;
+    line-height: normal;
+    top: 294px;
+    white-space: nowrap;
+
+}
+    
+
+.android-compact-2 .text-3 {
+  color: var(--black);
+  font-family: Inter2;
+  font-size: var(--font-size-m);
+  font-weight: 400;
+  left: 142px;
+  top: 294px;
+  white-space: nowrap;
+}
+
+.android-compact-2 .image {
+  height: 60px;
+  left: 47px;
+  object-fit: cover;
+  position: absolute;
+  top: 276px;
+  width: 85px;
+}
+
+.android-compact-2 .text {
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+}

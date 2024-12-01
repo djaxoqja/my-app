@@ -1,0 +1,262 @@
+@font-face {
+	font-family: Alata;
+	src: url(../alram/Alata-Regular.ttf);
+
+}
+
+
+.e77_13 { 
+	overflow:hidden;
+}
+.e77_13 { 
+	width:412px;
+	height:917px;
+	position:absolute;
+	background-color: #FFFFFF;
+}
+.e77_16 { 
+	background-color:rgba(18.256775848567486, 47.650244906544685, 82.15561956167221, 1);
+	width:641px;
+	height:99px;
+	position:absolute;
+	left:-181px;
+	top:-2px;
+}
+.e77_17 { 
+	transform: rotate(180deg);
+	width:54px;
+	height:47px;
+	position:absolute;
+	left:91px;
+	top:28px;
+}
+.e77_18 { 
+	width:31.724533081054688px;
+	height:47px;
+	position:absolute;
+	left:11.137714385986328px;
+	top:0px;
+}
+.e77_19 { 
+	width:31.724533081054688px;
+	height:47px;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+.e77_20 { 
+	background-image: url(../alram/images/right-arrow\ 1.png);
+	background-color: transparent;
+	border: none;
+	transform: scaleX(-1);
+	background-size: cover;
+	background-repeat: no-repeat;
+	width:50.724533081054688px;
+	height:47px;
+	position:absolute;
+	left:30px;
+	top:0px;
+}
+.e77_21 { 
+	color:rgba(255, 255, 255, 1);
+	width:250px;
+	height:52px;
+	position:absolute;
+	left:121px;
+	top:28px;
+	font-family:Alata;
+	text-align:left;
+	font-size:35px;
+	letter-spacing:0;
+	white-space: nowrap;
+}
+.e77_22 { 
+	width:45px;
+	height:45px;
+	position:absolute;
+	left:140px;
+	top:30px;
+}
+.e77_28 { 
+	background-color:rgba(242.9582941532135, 244.3631547689438, 255, 1);
+	width:641px;
+	height:98px;
+	position:absolute;
+	left:-5px;
+	top:106px;
+}
+.e77_29 { 
+	background-color:rgba(243.00000071525574, 244.0000006556511, 255, 1);
+	width:641px;
+	height:98px;
+	position:absolute;
+	left:0px;
+	top:209px;
+}
+.e77_31 { 
+	color:rgba(85.0000025331974, 85.0000025331974, 85.0000025331974, 1);
+	width:388px;
+	height:52px;
+	position:absolute;
+	left:91px;
+	top:127px;
+	font-family:Alata;
+	text-align:left;
+	font-size:20px;
+	letter-spacing:0;
+	white-space: nowrap;
+}
+.e77_32 { 
+	color:rgba(85.0000025331974, 85.0000025331974, 85.0000025331974, 1);
+	width:388px;
+	height:52px;
+	position:absolute;
+	left:91px;
+	top:232px;
+	font-family:Alata;
+	text-align:left;
+	font-size:20px;
+	letter-spacing:0;
+	white-space: nowrap;
+}
+.e77_67 { 
+	width:102.81967163085938px;
+	height:56px;
+	position:absolute;
+	left:509.59014892578125px;
+	top:150px;
+}
+.e77_68 { 
+	background-color:rgba(65.0000037252903, 33.00000183284283, 96.00000187754631, 1);
+	width:102.81967163085938px;
+	height:56px;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+.e77_69 { 
+	color:rgba(255, 255, 255, 1);
+	width:74.36065673828125px;
+	height:47.73770523071289px;
+	position:absolute;
+	left:15.60655689239502px;
+	top:5.508196830749512px;
+	font-family:Alata;
+	text-align:left;
+	font-size:34px;
+	letter-spacing:0;
+	white-space: nowrap;
+}
+.e77_70 { 
+	width:48px;
+	height:56px;
+	position:absolute;
+	left:22px;
+	top:127px;
+}
+.e77_71 { 
+	background-image: url(../alram/images/comment\ 1.png);
+	background-repeat: no-repeat;
+	width:50.9999885559082px;
+	height:48.301025390625px;
+	position:absolute;
+	left:1.4765701293945312px;
+	top:3.773395538330078px;
+}
+
+
+.e77_75 { 
+	width:48px;
+	height:56px;
+	position:absolute;
+	left:22px;
+	top:230px;
+}
+.e77_76 { 
+	background-image: url(../alram/images/comment\ 1.png);
+	background-repeat: no-repeat;
+	width:50.9999885559082px;
+	height:48.301025390625px;
+	position:absolute;
+	left:1.4765701293945312px;
+	top:3.773395538330078px;
+}
+
+
+.e77_80 { 
+	background-color:rgba(243.00000071525574, 244.0000006556511, 255, 1);
+	width:641px;
+	height:98px;
+	position:absolute;
+	left:0px;
+	top:312px;
+}
+.e77_81 { 
+	color:rgba(85.0000025331974, 85.0000025331974, 85.0000025331974, 1);
+	width:388px;
+	height:52px;
+	position:absolute;
+	left:91px;
+	top:334px;
+	font-family:Alata;
+	text-align:left;
+	font-size:20px;
+	letter-spacing:0;
+	white-space: nowrap;
+}
+.e77_82 { 
+	width:48px;
+	height:56px;
+	position:absolute;
+	left:22px;
+	top:333px;
+}
+.e77_83 { 
+	background-image: url(../alram/images/comment\ 1.png);
+	background-repeat: no-repeat;
+	width:50.9999885559082px;
+	height:48.301025390625px;
+	position:absolute;
+	left:1.4765701293945312px;
+	top:3.773395538330078px;
+}
+
+
+.e77_87 { 
+	background-color:rgba(243.00000071525574, 244.0000006556511, 255, 1);
+	width:641px;
+	height:98px;
+	position:absolute;
+	left:0px;
+	top:415px;
+}
+.e77_88 { 
+	color:rgba(85.0000025331974, 85.0000025331974, 85.0000025331974, 1);
+	width:388px;
+	height:52px;
+	position:absolute;
+	left:91px;
+	top:445px;
+	font-family:Alata;
+	text-align:left;
+	font-size:20px;
+	letter-spacing:0;
+	white-space: nowrap;
+}
+.e77_89 { 
+	width:48px;
+	height:56px;
+	position:absolute;
+	left:22px;
+	top:436px;
+}
+.e77_90 { 
+	background-image: url(../alram/images/comment\ 1.png);
+	background-repeat: no-repeat;
+	width:50.9999885559082px;
+	height:48.301025390625px;
+	position:absolute;
+	left:1.4765701293945312px;
+	top:3.773395538330078px;
+}
+

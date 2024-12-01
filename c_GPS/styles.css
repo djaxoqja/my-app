@@ -1,0 +1,314 @@
+:root {
+	background: white;
+	--bg-color-e65_119-light: rgba(255, 255, 255, 1);
+    --bg-color-e65_119-dark: #6F727A;
+	--font-color-light: rgba(18.256775848567486, 47.650244906544685, 82.15561956167221, 1);
+    --font-color-dark: white;
+}
+
+body {
+	background-color: white;
+	color: var(--font-color-light);
+	
+}
+[data-theme = "dark-mode"] body {
+	background-color: #6F727A
+}
+
+[data-theme="dark-mode"] * {
+    color: var(--font-color-dark) !important; /* 모든 요소 텍스트 흰색 */
+}
+
+
+.e65_35 { 
+	overflow:hidden;
+}
+.e65_35 { 
+	background-color:rgba(255, 255, 255, 1);
+	width:412px;
+	height:917px;
+	position:absolute;
+}
+.e65_36 { 
+	width:666px;
+	height:1130px;
+	position:absolute;
+	left:-231px;
+	top:-137px;
+	background-image:url(../c_GPS/images/383_2x_1.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.e65_37 { 
+	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+	background-color:rgba(255, 255, 255, 1);
+	opacity:0.800000011920929;
+	width:412px;
+	height:544px;
+	position:absolute;
+	left:0px;
+	top:-141px;
+	border-radius:30px;
+}
+
+[data-theme="dark-mode"] .e65_37 {
+    background-color: var(--bg-color-e65_119-dark);
+}
+
+
+.e65_39 { 
+	width:400px;
+	height:85px;
+	position:absolute;
+	left:5px;
+	top:217px;
+}
+.e65_40 { 
+	box-shadow:0px 11px 12px rgba(0, 0, 0, 0.25);
+	background-color:rgba(255, 255, 255, 1);
+	width:400px;
+	height:85px;
+	position:absolute;
+	left:0px;
+	top:0px;
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:20px;
+}
+
+[data-theme="dark-mode"] .e65_40 {
+    background-color: var(--bg-color-e65_119-dark);
+}
+.e65_41 { 
+	width:55.36332321166992px;
+	height:85px;
+	position:absolute;
+	left:1.384033203125px;
+	top:0px;
+}
+.e65_42 { 
+	box-shadow:4px 0px 4px rgba(0, 0, 0, 0.25);
+	background-color:rgba(255, 255, 255, 1);
+	width:55px;
+	height:85px;
+	position:absolute;
+	left:0px;
+	top:0px;
+	border-radius: 20px 0px 0px 20px;
+}
+
+[data-theme="dark-mode"] .e65_42 {
+    background-color: var(--bg-color-e65_119-dark);
+}
+button.e65_43 { 
+	color:rgba(18.256775848567486, 47.650244906544685, 82.15561956167221, 1);
+	background-color: transparent;
+	border: none;
+	width:164px;
+	height:41px;
+	position:absolute;
+	left:75.99994659423828px;
+	top:22px;
+	font-family:Alata;
+	text-align:left;
+	font-size:30px;
+	letter-spacing:0;
+}
+.e65_44 { 
+	width:38.062278747558594px;
+	height:55px;
+	position:absolute;
+	left:9.380563735961914px;
+	top:15px;
+	background-image:url(../c_GPS/images/maps-and-location\ 1.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.e72_15 { 
+	color:rgba(18.256775848567486, 47.650244906544685, 82.15561956167221, 1);
+	width:164px;
+	height:41px;
+	position:absolute;
+	left:80.99993896484375px;
+	top:239px;
+	font-family:Alata;
+	text-align:left;
+	font-size:30px;
+	letter-spacing:0;
+}
+.e72_5 { 
+	width:400px;
+	height:85px;
+	position:absolute;
+	left:0px;
+	top:109px;
+}
+.e72_6 { 
+	box-shadow:0px 11px 12px rgba(0, 0, 0, 0.25);
+	background-color:rgba(255, 255, 255, 1);
+	width:400px;
+	height:85px;
+	position:absolute;
+	left:0px;
+	top:0px;
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:20px;
+}
+
+[data-theme="dark-mode"] .e72_6 {
+    background-color: var(--bg-color-e65_119-dark);
+}
+.e72_7 { 
+	width:55.36332321166992px;
+	height:85px;
+	position:absolute;
+	left:1.384033203125px;
+	top:0px;
+}
+.e72_8 { 
+	box-shadow:4px 0px 4px rgba(0, 0, 0, 0.25);
+	background-color:rgba(255, 255, 255, 1);
+	width:55px;
+	height:85px;
+	position:absolute;
+	left:0px;
+	top:0px;
+	border-radius: 20px 0px 0px 20px;
+}
+
+[data-theme="dark-mode"] .e72_8 {
+    background-color: var(--bg-color-e65_119-dark);
+}
+button.e72_9 { 
+	color:rgba(18.256775848567486, 47.650244906544685, 82.15561956167221, 1);
+	background-color: transparent;
+	border: none;
+	width:164px;
+	height:41px;
+	position:absolute;
+	left:75.99994659423828px;
+	top:22px;
+	font-family:Alata;
+	text-align:left;
+	font-size:30px;
+	letter-spacing:0;
+}
+.e65_45 { 
+	width:54px;
+	height:54px;
+	position:absolute;
+	left:333px;
+	top:35px;
+}
+
+.e65_47 { 
+	background-image: url(../c_GPS/images/crosshair\ 2.png);
+	width:54px;
+	height:54px;
+	position:absolute;
+	left:1.9984014443252818e-15px;
+	top:2.220446049250313e-16px;
+}
+
+
+
+.e65_48 { 
+	color:rgba(18.256775848567486, 47.650244906544685, 82.15561956167221, 1);
+	width:63px;
+	height:48px;
+	position:absolute;
+	left:174px;
+	top:38px;
+	font-family:Alata;
+	text-align:left;
+	font-size:35px;
+	letter-spacing:0;
+}
+.e65_49 { 
+	width:593px;
+	height:76px;
+	position:absolute;
+	left:2px;
+	top:20px;
+}
+.e65_50 { 
+	width:593px;
+	height:76px;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+button.e65_54 { 
+	background-color: transparent;
+	border: none;
+	width:37px;
+	height:37px;
+	position:absolute;
+	left:12px;
+	top:20px;
+	background-image:url(../c_GPS/images/left_arrow__5__1.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.e65_55 { 
+	color:rgba(255, 255, 255, 1);
+	width:151px;
+	height:48px;
+	position:absolute;
+	left:130px;
+	top:336px;
+	font-family:Alata;
+	text-align:center;
+	font-size:35px;
+	letter-spacing:0;
+}
+.e65_57 { 
+	width:97px;
+	height:39px;
+	position:absolute;
+	left:252px;
+	top:198px;
+}
+.e65_58 { 
+	width:25px;
+	height:25px;
+	position:absolute;
+	left:359px;
+	top:247px;
+}
+.e65_59 { 
+	background-image: url(../c_GPS/images/🦆\ icon\ _pencil_.png);
+	width:25px;
+	height:25px;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+.e72_12 { 
+	width:25px;
+	height:25px;
+	position:absolute;
+	left:359px;
+	top:141px;
+}
+.e72_13 { 
+	background-image: url(../c_GPS/images/🦆\ icon\ _pencil_.png);
+	width:25px;
+	height:25px;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+.e72_53 { 
+	width:55px;
+	height:55px;
+	position:absolute;
+	left:2px;
+	top:124px;
+	background-image:url(../c_GPS/images/maps-and-location\ 2.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}

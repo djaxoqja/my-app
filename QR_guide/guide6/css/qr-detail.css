@@ -1,0 +1,139 @@
+/* screen - qr-detail */
+
+.qr-detail {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  height: 917px;
+  overflow: hidden;
+  width: 412px;
+}
+
+.qr-detail .overlap-group {
+  height: 1130px;
+  margin-left: -219px;
+  margin-top: -141px;
+  position: relative;
+  width: 814px;
+}
+
+.qr-detail .x3832x-1 {
+  height: 1130px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 666px;
+}
+
+.qr-detail .rectangle-56 {
+  height: 785px;
+  left: 219px;
+  position: absolute;
+  top: 142px;
+  width: 412px;
+}
+
+.qr-detail .qr-code {
+  color: #c4c4c4;
+  font-family: var(--font-family-alata);
+  font-size: var(--font-size-m);
+  font-weight: 400;
+  left: 237px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 746px;
+  width: 383px;
+}
+
+.qr-detail .rectangle-148 {
+  height: 99px;
+  left: 221px;
+  position: absolute;
+  top: 142px;
+  width: 410px;
+}
+
+.qr-detail .group {
+  background-image: url(../img/group@2x.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  height: 47px;
+  left: 243px;
+  position: absolute;
+  top: 172px;
+  width: 54px;
+}
+
+.qr-detail .group-105 {
+  height: 76px;
+  left: 221px;
+  position: absolute;
+  top: 161px;
+  width: 593px;
+}
+
+.qr-detail .crosshair-2 {
+  background-image: url(../img/crosshair\ 2.png);
+  background-color: transparent;
+  border: none;
+  height: 54px;
+  left: 552px;
+  position: absolute;
+  top: 170px;
+  width: 54px;
+}
+
+.qr-detail .rectangle-137 {
+  height: 64px;
+  left: 307px;
+  position: absolute;
+  top: 639px;
+  width: 237px;
+}
+
+.qr-detail .text-1 {
+  color: var(--white);
+  font-family: var(--font-family-alata);
+  font-size: var(--font-size-l);
+  font-weight: 400;
+  left: 349px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 645px;
+  width: 151px;
+}
+
+.qr-detail .qr-code-1 {
+  color: var(--white);
+  font-family: var(--font-family-alata);
+  font-size: var(--font-size-l);
+  font-weight: 400;
+  left: 297px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 170px;
+}
+
+.qr-detail .rectangle-150 {
+  height: 250px;
+  left: 300px;
+  position: absolute;
+  top: 322px;
+  width: 250px;
+}
+
+.qr-detail .group-185 {
+  height: 260px;
+  left: 300px;
+  position: absolute;
+  top: 322px;
+  width: 260px;
+}
