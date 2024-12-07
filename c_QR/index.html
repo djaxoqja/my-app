@@ -27,10 +27,30 @@
           
           <body>
             <div class=e65_60><div  class="e65_61"></div><div  class="e65_62"></div><div class=e65_65><div  class="e65_66"></div><div class=e65_67><div  class="e65_68"></div></div>
-            <div><button class="e65_70" onclick = "location.href= '.html';" >오픈채팅 연결</button></div>
+            <div>
+                      <button class="e65_70" onclick="openKakaoOpenChat()">오픈채팅 연결</button></div>
+                      
           </div><div class=e65_72><div  class="e65_73"></div><div class=e65_74><div  class="e65_75"></div><div  class="e76_22"></div></div>
           
           <div><button class="e65_77" onclick = "location.href= '../print/index.html';" >QR CODE 출력</button></div><div class=e76_16><div  class="ei76_16_54616_25464"></div></div><div  class="e65_78"></div><div class=e65_79><div  class="e65_80"></div></div></div><div class=e65_82><div  class="e65_83"></div><div  class="e65_84"></div></div><span  class="e65_85">QR CODE </span><div class=e65_86><div  class="e65_87"></div>
-            <button class="e65_91" onclick = "location.href= '../select/select.html';" ></button></div><div class=e65_92><div  class="e65_93"></div></div></div>
+          <button class="e65_91" onclick = "location.href= '../select/select.html';" ></button></div><div class=e65_92><div  class="e65_93"></div></div>
+         
+                      <script>
+                    
+        function openKakaoOpenChat() {
+            const kakaoAppLink = "kakaotalk://openchat"; // 카카오톡 오픈채팅 목록 화면으로 이동
+
+            // 모바일 환경 확인
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // 카카오톡 앱으로 이동 시도
+                window.location.href = kakaoAppLink;
+            } else {
+                // PC 환경에서는 안내 메시지 표시
+                alert("이 기능은 모바일에서만 지원됩니다. 카카오톡 앱을 사용해주세요.");
+            }
+        }
+    </script>      
           </body>
           </html>
