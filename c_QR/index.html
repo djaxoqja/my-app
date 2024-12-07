@@ -37,11 +37,16 @@
             <button class="e65_91" onclick = "location.href= '../select/select.html';" ></button></div><div class=e65_92><div  class="e65_93"></div></div></div>
 
             <script>
-                
+
                 document.getElementById("e65_70").addEventListener("click", function() {
-            console.log("버튼 클릭됨 - Android 호출 시도");
+        console.log("버튼 클릭됨 - Android 호출 시도");
+        try {
             Android.openKakaoOpenChat();
-        });
+            console.log("Android.openKakaoOpenChat() 호출 성공");
+        } catch (error) {
+            console.error("Android.openKakaoOpenChat() 호출 실패:", error);
+        }
+    });
             </script>
 
           </body>
