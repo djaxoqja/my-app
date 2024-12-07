@@ -35,22 +35,12 @@
           <div><button class="e65_77" onclick = "location.href= '../print/index.html';" >QR CODE 출력</button></div><div class=e76_16><div  class="ei76_16_54616_25464"></div></div><div  class="e65_78"></div><div class=e65_79><div  class="e65_80"></div></div></div><div class=e65_82><div  class="e65_83"></div><div  class="e65_84"></div></div><span  class="e65_85">QR CODE </span><div class=e65_86><div  class="e65_87"></div>
           <button class="e65_91" onclick = "location.href= '../select/select.html';" ></button></div><div class=e65_92><div  class="e65_93"></div></div>
          
-                      <script>
-                    
-        function openKakaoOpenChat() {
-            const kakaoAppLink = "kakaotalk://openchat"; // 카카오톡 오픈채팅 목록 화면으로 이동
-
-            // 모바일 환경 확인
-            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-            if (isMobile) {
-                // 카카오톡 앱으로 이동 시도
-                window.location.href = kakaoAppLink;
-            } else {
-                // PC 환경에서는 안내 메시지 표시
-                alert("이 기능은 모바일에서만 지원됩니다. 카카오톡 앱을 사용해주세요.");
-            }
-        }
-    </script>      
+                   <script>
+                function openKakaoOpenChat() {
+                    // Android WebView의 인터페이스를 통해 Java 메서드 호출
+                    Android.openKakaoOpenChat();
+                }
+            </script>
+   
           </body>
           </html>
