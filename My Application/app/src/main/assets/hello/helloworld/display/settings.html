@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="../display/css/settings.css" />
+    <link rel="stylesheet" type="text/css" href="../display/css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="../display/css/globals.css" />
+   
+   <style> /* 기준 */
+      :root {
+  background: white;
+}
+body {
+  background-color: white;
+  transition: background-color 1s;
+}
+
+[data-theme = "dark-mode"] body {
+  background-color:#6F727A;
+}
+
+
+    </style>
+  </head>
+
+
+  <body data-theme = "light-mode"  style="margin: 0">
+    <input type="hidden" id="anPageName" name="page" value="settings" />
+    <div class="container-center-horizontal">
+      <div class="settings screen">
+        <div class="overlap-group overlap">
+
+          <button class="right-arrow-7" onclick = "location.href= '../design_setting/index.html';" ></button>
+          <h1 class="text-1">화면 배경 설정</h1>
+        </div>
+
+  
+        <div class="flex-row">
+          <label class = "darkmode">
+            <input id="toggleBtn" type="checkbox" >
+          </label>
+        
+          <img class="volume1" src="../display/img/Eye off.png" alt="Volume x" />
+          <img class="volume2" src="../display/img/Eye.png" alt="Volume 3" />
+
+          <div class="overlap-group1 overlap">
+            <div class="ellipse-12"></div>
+          </div>
+          
+        </div>
+      
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      
+      // 페이지 로드 시 다크 모드 상태를 체크하여 적용
+      document.addEventListener("DOMContentLoaded", function () {
+        const savedTheme = localStorage.getItem("theme"); // 로컬 스토리지에서 저장된 테마 읽기
+        if (savedTheme === "dark-mode") {
+          document.body.setAttribute("data-theme", "dark-mode"); // 다크 모드 설정
+          document.getElementById("toggleBtn").checked = true; // 체크박스도 다크 모드 상태로 설정
+        } else {
+          document.body.setAttribute("data-theme", "light-mode"); // 라이트 모드 설정
+          document.getElementById("toggleBtn").checked = false; // 체크박스는 해제 상태
+        }
+      });
+
+      // 다크 모드 전환 로직
+      const toggleBtn = document.getElementById('toggleBtn');
+      const body = document.body;
+
+      toggleBtn.addEventListener('change', () => {
+        if (toggleBtn.checked) {
+          body.setAttribute('data-theme', 'dark-mode'); // 다크 모드
+          localStorage.setItem("theme", "dark-mode"); // 다크 모드 상태를 로컬 스토리지에 저장
+        } else {
+          body.setAttribute('data-theme', 'light-mode'); // 라이트 모드
+          localStorage.setItem("theme", "light-mode"); // 라이트 모드 상태를 로컬 스토리지에 저장
+        }
+      });
+    </script>
+  </body>
+</html>
