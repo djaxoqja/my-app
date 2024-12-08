@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         webView.addJavascriptInterface(WebAppInterface(this), "Android")
 
         // 웹 페이지 로드
-        webView.loadUrl("https://djaxoqja.github.io/my-app")
+        webView.loadUrl("https://djaxoqja.github.io/my-app/My Application/app/src/main/assets/hello/helloworld")
 
 
         // Geolocation 요청 처리
