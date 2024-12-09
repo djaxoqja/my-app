@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="../guide6/css/qr-detail.css" />
+    <link rel="stylesheet" type="text/css" href="../guide6/css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="../guide6/css/globals.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <script>
+      // QR 코드 업로드 함수
+      function uploadQRCode() {
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0]; // 사용자가 선택한 파일
+
+        // 파일이 선택되지 않았으면 종료
+        if (!file) {
+          alert('파일을 선택해 주세요.');
+          return;
+        }
+
+        // FormData 생성
+        const formData = new FormData();
+        formData.append('qr_code', file); // 'qr_code'는 서버에서 받는 필드명
+
+        // API 엔드포인트 URL
+        const apiUrl = 'https://port-0-findmerestapi-m3fhz3vp2699497a.sel4.cloudtype.app/users/profile/qrcode/';
+
+        // JWT 토큰 가져오기 (쿠키에서 토큰을 가져오는 함수)
+        const token = getCookie('token'); // 쿠키에서 JWT 토큰 가져오기
+        console.log('JWT Token:', token);
+
+        if (!token) {
+            alert('로그인 정보가 없습니다. 다시 로그인하세요.');
+            return;
+        }
+
+        // POST 요청 보내기
+        axios.put(apiUrl, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` // 인증이 필요하면 추가
+          }
+        })
+        .then(function (response) {
+          console.log('QR 코드 업로드 성공:', response.data);
+          
+          // 서버에서 반환된 이미지 URL을 사용
+          const uploadedImageURL = response.data.qr_code;
+          console.log('Uploaded Image URL:', uploadedImageURL);
+
+          // 이미지가 정상적으로 반환되었으면 이미지 업데이트
+          const imgElement = document.querySelector('.group-185');
+          
+          // 서버에서 반환된 URL이 상대 경로라면 절대 경로로 변환
+          const baseUrl = 'https://port-0-findmerestapi-m3fhz3vp2699497a.sel4.cloudtype.app'; // 서버의 도메인
+          const fullImageURL = baseUrl + uploadedImageURL; // 절대 URL로 만들기
+          
+          // 이미지 태그의 src를 업데이트
+          imgElement.src = fullImageURL;
+
+          alert('QR 코드가 업로드되었습니다!');
+        })
+        .catch(function (error) {
+          console.error('업로드 실패:', error);
+          alert('QR 코드 업로드에 실패했습니다.');
+        });
+      }
+
+      // 쿠키에서 JWT 토큰을 가져오는 함수
+      function getCookie(name) {
+        let cookieArr = document.cookie.split(';');
+        for (let i = 0; i < cookieArr.length; i++) {
+          let cookie = cookieArr[i].trim();
+          if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
+          }
+        }
+        return null;
+      }
+    </script>
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="qr-detail" />
+    <div class="container-center-horizontal">
+      <div class="qr-detail screen">
+        <div class="overlap-group">
+          <img class="x3832x-1" src="../guide6/img/383-2x-1.png" alt="383@2x 1" />
+          <img class="rectangle-56" src="../guide6/img/rectangle-56.svg" alt="Rectangle 56" />
+          <p class="qr-code"><br />오픈 채팅의 QR CODE를 등록해주세요.</p>
+          <img class="rectangle-148" src="../guide6/img/rectangle-148.svg" alt="Rectangle 148" />
+
+          
+
+          <div class="group-105"></div>
+
+
+          <button class="group" onclick = "location.href= '../guide5/qr-detail5.html';" ></button>
+
+          <button class="crosshair-2" onclick = "location.href= '../../setting/index.html';" ></button>
+
+          <img class="rectangle-137" src="../guide6/img/rectangle-137.svg" alt="Rectangle 137" />
+          <button class="text-1" onclick="document.getElementById('fileInput').click();">등록하기</button>
+  
+          <!-- 숨겨진 파일 업로드 input -->
+          <input type="file" id="fileInput" style="display: none;" accept="image/*" onchange="uploadQRCode()" />
+
+          
+          <div class="qr-code-1">QR CODE 등록</div>
+          <img class="rectangle-150" src="../guide6/img/rectangle-150.svg" alt="Rectangle 150" />
+          <img class="group-185" src="../guide6/img/group-185@2x.png" alt="Group 185" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="../guide5/css/qr-detail.css" />
+    <link rel="stylesheet" type="text/css" href="../guide5/css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="../guide5/css/globals.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      function updateChatUrl() {
+        // 'chatUrlInput' ID를 가진 input 필드에서 값 가져오기
+        const chatUrl = document.getElementById('chatUrlInput').value;
+    
+        // chatUrl이 비어있는지 확인
+        if (!chatUrl) {
+          alert('채팅 URL을 입력해 주세요.');
+          return;
+        }
+    
+        // 요청에 보낼 데이터 객체 생성
+        const data = {
+          chat_url: chatUrl // 입력한 chat_url을 포함
+        };
+    
+        // JWT 토큰 가져오기 (예시로 쿠키에서 가져오는 방식)
+        const token = getCookie('token'); // 예시로 getCookie 함수 사용
+    
+        // 토큰이 없으면 경고 표시 후 함수 종료
+        if (!token) {
+          alert('로그인 정보가 없습니다. 다시 로그인하세요.');
+          return;
+        }
+    
+        // API URL 설정 (실제 URL로 수정)
+        const apiUrl = 'https://port-0-findmerestapi-m3fhz3vp2699497a.sel4.cloudtype.app/users/profile/chaturl/'; 
+    
+        // axios로 PUT 요청 보내기
+        axios.put(apiUrl, data, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` // 인증 헤더 추가
+          }
+        })
+        .then(function (response) {
+          console.log('Chat URL 등록 성공:', response.data);
+          alert('Chat URL이 등록되었습니다!');
+        })
+        .catch(function (error) {
+          console.error('Chat URL 등록 실패:', error);
+          alert('Chat URL 등록에 실패했습니다.');
+        });
+      }
+    
+      // 쿠키에서 JWT 토큰을 가져오는 함수 (예시)
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+      }
+    </script>
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="qr-detail" />
+    <div class="container-center-horizontal">
+      <div class="qr-detail screen">
+        <div class="overlap-group">
+          <img class="rectangle-56" src="../guide5/img/rectangle-56.svg" alt="Rectangle 56" />
+          <img class="rectangle-137" src="../guide5/img/rectangle-137.svg" alt="Rectangle 137" />
+          <div class="rectangle-53"></div>
+          <button class="text-1" onclick="updateChatUrl()">등록하기</button>
+          <div class="url"><br />오픈 채팅의 URL을 등록해주세요.</div>
+          <img class="rectangle-148" src="../guide5/img/rectangle-148.svg" alt="Rectangle 148" />
+        
+          
+          <input class="url-1 url-3" type="url" id="chatUrlInput" placeholder="URL 입력: " style="border: none; outline: none;" />
+
+          <button class="group" onclick = "location.href= '../guide4/url-detail4.html';" ></button>
+
+          <button class="crosshair-2" onclick = "location.href= '../../setting/index.html';" ></button>
+
+          <img class="close-1" src="../guide5/img/close-1.png" alt="close 1" />
+          <div class="url-2 url-3">URL 등록</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

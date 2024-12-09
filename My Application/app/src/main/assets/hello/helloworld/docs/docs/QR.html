@@ -1,0 +1,119 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jsQR Demo</title>
+  <script src="./jsQR.js"></script>
+  <link href="../docs/style.css" rel="stylesheet">
+
+
+  <style>
+
+    body {
+      background: #E5E5E5; }
+  </style>
+
+</head>
+
+
+<body>
+  <div>
+    <div class=e65_94><div  class="e65_95"></div><div  class="e65_96"></div>
+
+
+  
+ 
+  <div id="loadingMessage">🎥 카메라가 활성화 되어 있는지 확인하세요.</div>
+  <canvas id="canvas" hidden></canvas>
+
+
+  <div id="output" hidden>
+    <div id="outputMessage">QR코드가 탐지 되지 않았습니다.</div>
+    <div hidden><b>Data:</b> <div id="outputData"></div></div>
+  </div>
+
+  
+
+  <script>
+    var video = document.createElement("video");
+    var canvasElement = document.getElementById("canvas");
+    var canvas = canvasElement.getContext("2d");
+    var loadingMessage = document.getElementById("loadingMessage");
+    var outputContainer = document.getElementById("output");
+    var outputMessage = document.getElementById("outputMessage");
+    var outputData = document.getElementById("outputData");
+
+    function drawLine(begin, end, color) {
+      canvas.beginPath();
+      canvas.moveTo(begin.x, begin.y);
+      canvas.lineTo(end.x, end.y);
+      canvas.lineWidth = 4;
+      canvas.strokeStyle = color;
+      canvas.stroke();
+    }
+
+    // 카메라 사용 시
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+      video.srcObject = stream;
+      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+      video.play();
+      requestAnimationFrame(tick);
+    });
+
+    function tick() {
+      loadingMessage.innerText = "⌛ 스캔 기능을 활성화 중입니다."
+
+      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+
+        loadingMessage.hidden = true;
+        canvasElement.hidden = false;
+        outputContainer.hidden = false;
+
+        /*읽어들이는 비디오 화면의 크기 */
+
+        canvasElement.height = video.videoHeight;
+        canvasElement.width = video.videoWidth;
+        canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+        var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+        var code = jsQR(imageData.data, imageData.width, imageData.height, {
+          inversionAttempts: "dontInvert",
+        });
+
+
+        /*인식에 성공한 경우*/
+        if (code) {
+
+          /*인식한 QR코드의 영역을 감싸는 사용자에게 보여지는 테두리 생성*/
+          drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
+          drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
+          drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
+          drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+          outputMessage.hidden = true;
+          outputData.parentElement.hidden = false;
+          
+          
+          
+          if (isValidUrl(code.data)) {
+            outputData.innerHTML = `<a href="${code.data}" target="_blank">🔗: ${code.data}</a>`;
+          } else {
+            outputData.innerText = `스캔된 텍스트: ${code.data}`;
+          }
+        } else {
+          outputMessage.hidden = false;
+          outputData.parentElement.hidden = true;
+        }
+      }
+       requestAnimationFrame(tick);
+    }   
+
+    function isValidUrl(string) {
+      try {
+        new URL(string);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=412, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>물건 관리 및 위치 표시</title>
+    <style>
+        @font-face {
+            font-family: Inter;
+            src: url(../stuff/Inter_24pt-Medium.ttf);
+        }
+        body {
+            font-family: 'Inter' !important;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 412px;
+            height: 917px;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+        #controls {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: rgba(18.256775848567486, 47.650244906544685, 82.15561956167221, 1);
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input, button, select {
+            width: 90%;
+            margin: 5px 0;
+            padding: 10px;
+            font-family: 'Inter' !important;
+            font-weight: 500;
+            font-size: 14px;
+            box-sizing: border-box;
+            border-radius: 30px;
+            border: none;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 
+            0px 1px 3px -1px;
+        }
+        #map {
+            width: 100%;
+            height: calc(100% - 150px); /* 전체 높이에서 컨트롤 영역 제외 */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <input type="text" id="itemName" placeholder="물건 이름">
+        <button onclick="addItem()">물건 추가</button>
+        <select id="itemList" onchange="showLocation()">
+            <option value="">물건을 선택하세요</option>
+        </select>
+        <button onclick="editItem()">물건 수정</button>
+        <button onclick="deleteItem()">물건 삭제</button>
+    </div>
+    <div id="map"></div>
+
+    <script>
+        // 쿠키에서 JWT 토큰 가져오기
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null; // 쿠키가 없을 경우 null 반환
+        }
+
+        let map;
+        let marker;
+
+        // 초기 지도 설정
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 37.5665, lng: 126.9780 }, // 서울 좌표
+                zoom: 12
+            });
+        }
+
+        // 물건 리스트와 위치 데이터 관리
+        const items = [];
+
+        // 현재 위치 가져오기
+        function getCurrentLocation(callback) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const { latitude, longitude } = position.coords;
+                        callback(latitude, longitude);
+                    },
+                    (error) => {
+                        alert("위치를 가져올 수 없습니다: " + error.message);
+                    }
+                );
+            } else {
+                alert("위치 추적을 지원하지 않는 브라우저입니다.");
+            }
+        }
+
+        // 물건 추가 함수
+        function addItem() {
+            const name = document.getElementById("itemName").value;
+
+            if (!name) {
+                alert("물건 이름을 입력하세요!");
+                return;
+            }
+
+            getCurrentLocation((lat, lng) => {
+                const newItem = { name, lat, lng };
+
+                // JWT 토큰 가져오기
+                const token = getCookie('token'); // 쿠키에서 JWT 토큰 가져오기
+                console.log('JWT Token:', token);
+
+                if (!token) {
+                    alert('로그인 정보가 없습니다. 다시 로그인하세요.');
+                    return;
+                }
+
+                // 서버로 데이터 전송
+                fetch('https://port-0-findmerestapi-m3fhz3vp2699497a.sel4.cloudtype.app/main/belongings/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`, // JWT 토큰 추가
+                    },
+                    body: JSON.stringify(newItem), // name, lat, lng 값 전송
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.error) {
+                            alert(`서버 오류: ${data.error}`);
+                        } else {
+                            // 서버 응답 처리
+                            newItem.id = data.id; // 서버에서 생성된 ID 추가
+                            items.push(newItem);
+
+                            const option = document.createElement("option");
+                            option.text = name;
+                            option.value = items.length - 1;
+                            document.getElementById("itemList").add(option);
+
+                            // 입력 필드 초기화
+                            document.getElementById("itemName").value = "";
+                            alert("물건이 성공적으로 추가되었습니다!");
+                            saveItemsToLocalStorage(); // 로컬 스토리지에 물건 목록 저장
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("물건 추가 중 오류가 발생했습니다. 다시 시도하세요.");
+                    });
+            });
+        }
+
+        // 위치 표시 함수
+        function showLocation() {
+            const selectedIndex = document.getElementById("itemList").value;
+
+            if (selectedIndex === "") {
+                alert("물건을 선택하세요!");
+                return;
+            }
+
+            const { lat, lng } = items[selectedIndex];
+
+            // 지도 중심 이동
+            const position = { lat, lng };
+            map.setCenter(position);
+
+            // 마커 표시
+            if (marker) {
+                marker.setMap(null);
+            }
+            marker = new google.maps.Marker({
+                position,
+                map
+            });
+        }
+
+        // 물건 수정 함수
+        function editItem() {
+            const selectedIndex = document.getElementById("itemList").value;
+        
+            if (selectedIndex === "") {
+                alert("수정할 물건을 선택하세요!");
+                return;
+            }
+        
+            const newName = prompt("새로운 물건 이름을 입력하세요", items[selectedIndex].name);
+        
+            if (newName) {
+                const item = items[selectedIndex];
+                item.name = newName;
+        
+                // JWT 토큰 가져오기
+                const token = getCookie('token');
+        
+                // 서버로 데이터 전송
+                fetch('https://port-0-findmerestapi-m3fhz3vp2699497a.sel4.cloudtype.app/main/belongings/', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({ id: item.id, name: newName }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            alert(data.error);
+                        } else {
+                            document.getElementById("itemList").options[selectedIndex].text = newName;
+                            saveItemsToLocalStorage(); // 로컬 스토리지에 물건 목록 저장
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        }
+
+        // 물건 삭제 함수
+        function deleteItem() {
+            const selectedIndex = document.getElementById("itemList").value;
+        
+            if (selectedIndex === "") {
+                alert("삭제할 물건을 선택하세요!");
+                return;
+            }
+        
+            if (confirm("정말 삭제하시겠습니까?")) {
+                const item = items[selectedIndex];
+        
+                // JWT 토큰 가져오기
+                const token = getCookie('token');
+        
+                // 서버로 데이터 전송
+                fetch('https://port-0-findmerestapi-m3fhz3vp2699497a.sel4.cloudtype.app/main/belongings/', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({ id: item.id }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            alert(data.error);
+                        } else {
+                            items.splice(selectedIndex, 1);
+                            document.getElementById("itemList").remove(selectedIndex);
+        
+                            if (marker) {
+                                marker.setMap(null);
+                                marker = null;
+                            }
+                            saveItemsToLocalStorage(); // 로컬 스토리지에 물건 목록 저장
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        }
+
+        // 로컬 스토리지에 물건 목록 저장
+        function saveItemsToLocalStorage() {
+            localStorage.setItem('items', JSON.stringify(items));
+        }
+
+        // 로컬 스토리지에서 물건 목록 불러오기
+        function loadItemsFromLocalStorage() {
+            const storedItems = localStorage.getItem('items');
+            if (storedItems) {
+                const itemsArray = JSON.parse(storedItems);
+                items.length = 0; // 기존 items 배열 비우기
+                itemsArray.forEach(item => {
+                    items.push(item);
+                    const option = document.createElement("option");
+                    option.text = item.name;
+                    option.value = items.length - 1;
+                    document.getElementById("itemList").add(option);
+                });
+            }
+        }
+
+        // API에서 물건 목록을 가져와서 로컬 스토리지에 저장하는 함수
+        function fetchItemsFromAPI() {
+            // JWT 토큰 가져오기
+            const token = getCookie('token');
+            if (!token) {
+                alert("로그인 정보가 없습니다. 다시 로그인하세요.");
+                return;
+            }
+
+            // API 요청
+            fetch('https://port-0-findmerestapi-m3fhz3vp2699497a.sel4.cloudtype.app/main/belongings/', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`, // JWT 토큰 포함
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(`서버 오류: ${data.error}`);
+                    return;
+                }
+                // 받아온 데이터를 items 배열에 추가하고 로컬 스토리지에 저장
+                data.forEach(item => {
+                    items.push({
+                        name: item.name,
+                        lat: item.lat,
+                        lng: item.lng,
+                    });
+                });
+                saveItemsToLocalStorage(); // 로컬 스토리지에 저장
+                loadItemsFromLocalStorage(); // 로컬 스토리지에서 물건 목록 불러오기
+            })
+            .catch(error => {
+                console.error('Error fetching items:', error);
+            });
+        }
+
+        // 페이지 로드 시 물건 목록 불러오기
+        window.onload = function() {
+            loadItemsFromLocalStorage(); // 로컬 스토리지에서 물건 목록 불러오기
+            <!-- fetchItemsFromAPI(); // API에서 물건 목록 가져오기 -->
+        };
+    </script>
+
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3BstWjyaUqwzpogjYQZ-yrkb3v6kmfPc&callback=initMap">
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<html lang="en">
+          <head>
+            <meta charset="utf-8">
+          
+            <title>Html Generated</title>
+            <meta name="description" content="Figma htmlGenerator">
+            <meta name="author" content="htmlGenerator">
+            <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
+
+            <link rel="stylesheet" href="../print/styles.css">
+            <script src="../setting/theme.js"></script>
+            <style>
+              
+              body[data-theme="dark-mode"] {
+               background-color: #6F727A;
+               color: white;
+              }
+               body[data-theme="light-mode"] {
+                 background-color: white;
+                 color: #6F727A;;
+               }
+           </style>
+
+           <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+           <script>
+            // QR 코드 이미지를 다운로드하는 함수
+            function downloadQRCode() {
+                const apiUrl = 'https://port-0-findmerestapi-m3fhz3vp2699497a.sel4.cloudtype.app/users/profile/qrcode/'; // GET 요청 URL
+    
+                // JWT 토큰 가져오기 (쿠키에서)
+                const token = getCookie('token'); // 쿠키에서 JWT 토큰 가져오기
+                console.log('JWT Token:', token);
+    
+                if (!token) {
+                    alert('로그인 정보가 없습니다. 다시 로그인하세요.');
+                    return;
+                }
+    
+                // GET 요청 보내기
+                axios.get(apiUrl, {
+                    headers: {
+                        'Authorization': `Bearer ${token}` // 인증이 필요하면 추가
+                    }
+                })
+                .then(function (response) {
+                    console.log('QR 코드 URL 반환:', response.data);
+                    
+                    const qrCodeUrl = response.data.qr_code; // 서버에서 반환된 QR 코드 이미지 URL
+                    if (!qrCodeUrl) {
+                        alert('QR 코드가 없습니다.');
+                        return;
+                    }
+    
+                    // 절대 URL로 변환 (필요시)
+                    const baseUrl = 'https://port-0-findmerestapi-m3fhz3vp2699497a.sel4.cloudtype.app'; // 서버 기본 URL
+                    const fullUrl = qrCodeUrl.startsWith('http') ? qrCodeUrl : baseUrl + qrCodeUrl; // 상대 경로를 절대 경로로 변환
+    
+                    console.log('Full QR Code URL:', fullUrl);
+    
+                    // 이미지 다운로드
+                    downloadImage(fullUrl);
+                })
+                .catch(function (error) {
+                    console.error('QR 코드 다운로드 실패:', error);
+                    alert('QR 코드 다운로드에 실패했습니다.');
+                });
+            }
+    
+            // 이미지를 다운로드하는 함수
+            function downloadImage(url) {
+                const a = document.createElement('a');
+                a.href = url; // 이미지 URL
+                a.download = 'qr_code_image.png'; // 다운로드할 파일명 지정 (예: 'qr_code_image.png')
+                a.style.display = 'none'; // 링크를 화면에 표시하지 않도록 숨기기
+                document.body.appendChild(a);
+                a.click(); // 클릭 이벤트 실행하여 다운로드 시작
+                document.body.removeChild(a); // 다운로드 후 링크 요소를 제거
+            }
+    
+            // 쿠키에서 JWT 토큰을 가져오는 함수
+            function getCookie(name) {
+                let cookieArr = document.cookie.split(';');
+                for (let i = 0; i < cookieArr.length; i++) {
+                    let cookie = cookieArr[i].trim();
+                    if (cookie.startsWith(name + '=')) {
+                        return cookie.substring(name.length + 1);
+                    }
+                }
+                return null;
+            }
+        </script>
+          </head>
+          
+          <body>
+            <div class=e65_94>
+              <div  class="e65_95">
+
+              </div>
+              <div  class="e65_96">
+
+              </div>
+              <span  class="e76_32">오픈 채팅의 QR CODE가 다운로드 됩니다.
+                ‘Print it’ 버튼을 눌러 진행해주세요.
+              </span>
+              <div class=e65_97>
+                <div  class="e65_98">
+
+                </div>
+                <div class=e65_99>
+                  <div  class="e65_100">
+
+                  </div>
+                </div>
+                <div  class="e65_103">
+
+                </div>
+                <span  class="e76_30">QR CODE 출력</span>
+              </div>
+              <div class=e65_104>
+                <div  class="e65_105">
+
+                </div><div  class="e65_106">
+
+                </div>
+              </div>
+              <span  class="e65_107">QR CODE </span>
+              <div class=e65_108>
+                <div  class="e65_109">
+
+                </div>
+                <button class="e65_113" onclick = "location.href= '../c_QR/index.html';" ></button>
+              </div>
+              <div  class="e65_114">
+
+              </div>
+              <div  class="e76_26">
+
+              </div>
+               <!-- 다운로드 버튼 -->
+              <button class="e76_28" onclick="downloadQRCode()">Print it</button>
+
+            </div>
+          </body>
+          </html>

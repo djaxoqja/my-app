@@ -1,0 +1,90 @@
+@charset "utf-8";
+@font-face {
+	font-family: Jost;
+	src: url(../stuff/Jost-SemiBold.ttf);
+}
+@font-face {
+	font-family: Inter;
+	src: url(../stuff/Inter_24pt-Medium.ttf);
+
+}
+
+:root {
+	--button-color: #ffffff;
+	--button-bg-color:rgba(4.3273417465388775, 14.893956296145916, 35.405622348189354, 0.7900000214576721);
+	--button-hover-bg-color: rgba(4.3273417465388775, 14.893956296145916, 35.405622348189354, 0.7900000214576721);
+  }
+
+
+.e26_25 { 
+	overflow:hidden;
+}
+.e26_25 { 
+	background-color:rgba(255, 255, 255, 1);
+	width:412px;
+	height:917px;
+	position:absolute;
+}
+.e26_26 { 
+	width:1339px;
+	height:936px;
+	position:absolute;
+	left:-525px;
+	top:0px;
+	background-image:url(../stuff/image_1.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.e26_27 { 
+	
+	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+	
+	
+	width:146px;
+	height:46px;
+	position:absolute;
+	left:36px;
+	top:496px;
+	font-family:Jost;
+	font-style: normal;
+    font-weight: 700;
+	text-align:left;
+	font-size:32px;
+	line-height: 46px;
+    text-decoration-line: underline;
+
+
+
+	white-space:nowrap ;
+	color: #FCF7F7; 
+
+	letter-spacing:0;
+}
+
+
+
+
+.e26_28 { 
+	color:rgba(245.00000059604645, 245.00000059604645, 245.00000059604645, 1);
+	width:339px;
+	height:88px;
+	position:absolute;
+	left:-5px;
+	top:549px;
+	font-family:Inter;
+	text-align:center;
+	font-size:16px;
+	letter-spacing:0;
+
+	font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    
+
+    color: #F5F5F5;
+
+}
+
+

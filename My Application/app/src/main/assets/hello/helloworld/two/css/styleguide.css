@@ -1,0 +1,23 @@
+
+:root { 
+  --black: #000000;
+  --dune: #3c3636;
+ 
+  --font-size-l: 24px;
+  --font-size-m: 16px;
+ 
+
+}
+.inter-medium-dune-16px {
+  color: var(--dune);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 500;
+
+  width: 190px;
+  height: 21px;
+  left: 111px;
+  top: 546px;
+
+}
