@@ -251,6 +251,21 @@ button.e65_132 {
 	left:0px;
 	top:0px;
 }
+.e76_131 {
+	color: rgba(18, 47, 82, 1); /* "탈퇴하기" 버튼과 동일한 색상 */
+	background-color: transparent;
+	border: none;
+	width: 137px;
+	height: 21px;
+	position: absolute;
+	left: 305px; /* "탈퇴하기"와 동일한 수평 위치 */
+	top: 912px; /* "탈퇴하기" 위로 배치 (936px - 24px 간격) */
+	font-family: Alata;
+	font-weight: 500;
+	text-align: left;
+	font-size: 15px;
+	letter-spacing: 0;
+}
 .e76_132 { 
 	color:rgba(18.256775848567486, 47.650244906544685, 82.15561956167221, 1);
 	background-color: transparent;
