@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     kakaoLoginButton.addEventListener('click', () => {
         // Redirect 방식으로 로그인 요청
         Kakao.Auth.authorize({
-            redirectUri: 'https://yourdomain.com/kakao-callback.html', // Redirect URI 설정
+            redirectUri: 'https://djaxoqja.github.io/my-app/kakao-callback.html', // Redirect URI 설정
         });
     });
 });
